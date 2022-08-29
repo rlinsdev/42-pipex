@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app.c                                              :+:      :+:    :+:   */
+/*   test1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 18:55:06 by rlins             #+#    #+#             */
-/*   Updated: 2022/08/29 07:49:16 by rlins            ###   ########.fr       */
+/*   Created: 2022/08/29 07:44:13 by rlins             #+#    #+#             */
+/*   Updated: 2022/08/29 07:49:27 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-int	main(int argc, char **argv)
+int	startTest(int argc, char **argv)
 {
-	// start(argc, argv);
-
-	startTest(argc, argv);
+	ft_printf("\nExecutou sim!! TESTES\n");
 	return (0);
 }
