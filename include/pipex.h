@@ -6,12 +6,12 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/08/29 07:17:06 by rlins            ###   ########.fr       */
+/*   Updated: 2022/08/29 07:41:49 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef PIPEX_H
+# define PIPEX_H
 
 // # include "../lib/minilibx-linux/mlx.h"
 # include "./libft.h"
