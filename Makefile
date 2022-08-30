@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 19:15:33 by rlins             #+#    #+#              #
-#    Updated: 2022/08/29 07:47:47 by rlins            ###   ########.fr        #
+#    Updated: 2022/08/30 07:18:18 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,26 +25,13 @@ OBJS_PATH = ./obj/
 LIBS_PATH = ./lib/
 BINS_PATH = ./bin/
 
-# maps
-#MAP = maps/map_3x5.ber
-#MAP = maps/map_5x13.ber
-#MAP = maps/map_6x34.ber
-#MAP = maps/map_15x34.ber
-#MAP = maps/map_10x10.ber
-
-# Minilibx
-#MINILIBX_PATH	=	./lib/minilibx-linux
-#MINILIBX		=	$(MINILIBX_PATH)/libmlx.a
-
 # Compilation
 CC = gcc -g
 #FLAGS = -Wall -Wextra -Werror
-FLAGS = -Wall -Wextra
+FLAGS =
 
 #Chedk Leak memory
 LEAK = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s
-
-#MLXFLAGS = -lmlx -lXext -lX11
 
 # Bash commands
 RM = rm -f # -f Force
@@ -53,15 +40,12 @@ MAKE_NOPRINT = $(MAKE) --no-print-directory
 
 # Files
 SRC_FILES = pipex.c \
-			test1.c
+			test1.c test2.c
 
 SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
 OBJ_FILES = $(patsubst %.c, %.o, $(SRC_FILES))
 OBJECTS = $(addprefix $(OBJS_PATH), $(OBJ_FILES))
 EXECUTABLE = pipex
-
-# test:
-# 	@echo $(BINS_PATH)$(EXECUTABLE) $(MAP)
 
 # Targets
 all: libft $(NAME)
