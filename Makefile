@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 19:15:33 by rlins             #+#    #+#              #
-#    Updated: 2022/09/03 20:14:35 by rlins            ###   ########.fr        #
+#    Updated: 2022/09/03 20:22:17 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ all: $(NAME)
 
 # Creates static library libft.a inside ./libs/ folder
 $(NAME): $(OBJECTS)
-	ar -rcs $(NAME) $(OBJECTS)
+	ar -rcs ./bin/$(NAME) $(OBJECTS)
 
 # Creates object files for ft_pipex
 $(OBJS_PATH)%.o : $(SRCS_PATH)%.c $(HEADERS_PATH)*.h
