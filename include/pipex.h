@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/08/31 06:54:55 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/03 09:53:44 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // # include "../lib/minilibx-linux/mlx.h"
 # include "./libft.h"
-# include <unistd.h> //Execv
+# include <unistd.h> //Execve
 // # include <fcntl.h> // To Open a file
 // #include <X11/keysym.h> // Type key code pressed
 // #include <X11/X.h> // Type event em mask that hooks call
@@ -35,5 +35,6 @@ int	startTest2(int argc, char **argv);
 int	startTest3(int argc, char **argv);
 int	startTest4(int argc, char **argv);
 int	startTest5(int argc, char **argv);
+int	startTest6(int argc, char **argv, char **envp);
 
 #endif

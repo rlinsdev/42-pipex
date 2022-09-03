@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 19:15:33 by rlins             #+#    #+#              #
-#    Updated: 2022/08/31 06:55:11 by rlins            ###   ########.fr        #
+#    Updated: 2022/09/03 09:52:11 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ MAKE_NOPRINT = $(MAKE) --no-print-directory
 
 # Files
 SRC_FILES = pipex.c \
-			test1.c test2.c test3.c test4.c test5.c
+			test1.c test2.c test3.c test4.c test5.c test6.c
 
 SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
 OBJ_FILES = $(patsubst %.c, %.o, $(SRC_FILES))
