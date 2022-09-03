@@ -6,24 +6,23 @@
 #    By: rlins <rlins@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 19:15:33 by rlins             #+#    #+#              #
-#    Updated: 2022/09/03 19:50:42 by rlins            ###   ########.fr        #
+#    Updated: 2022/09/03 20:14:35 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
 # Collors
-GREEN = \033[0;32m
-RED = \033[0;31m
-BLUE = \033[0;34m
-RESET = \033[0m
+GREEN 	= \033[0;32m
+RED 	= \033[0;31m
+BLUE 	= \033[0;34m
+RESET 	= \033[0m
 
 # Paths
-HEADERS_PATH = ./include/
-SRCS_PATH = ./src/
-OBJS_PATH = ./obj/
-#LIBS_PATH = ./lib/
-BINS_PATH = ./bin/
+HEADERS_PATH 	= ./include/
+SRCS_PATH 		= ./src/
+OBJS_PATH 		= ./obj/
+BINS_PATH 		= ./bin/
 
 # Compilation
 CC = gcc -g
@@ -49,19 +48,10 @@ OBJECTS = $(addprefix $(OBJS_PATH), $(OBJ_FILES))
 EXECUTABLE = pipex
 
 # Targets
-#all: libft $(NAME)
 all: $(NAME)
-
-# Compiles libft all over
-#libft:
-#	@echo "$(NAME): $(BLUE)Generating... Just a minute$(RESET)"
-#	@cd $(LIBS_PATH)libft && $(MAKE_NOPRINT)
-#	@echo "$(NAME): $(GREEN)Done!$(RESET)"
 
 # Creates static library libft.a inside ./libs/ folder
 $(NAME): $(OBJECTS)
-#	cp $(LIBS_PATH)/libft.a $(LIBS_PATH)$(NAME)
-#	cp $(LIBS_PATH)/libft.a $(LIBS_PATH)$(NAME)
 	ar -rcs $(NAME) $(OBJECTS)
 
 # Creates object files for ft_pipex
@@ -84,15 +74,12 @@ clean:
 	@echo "$(GREEN)$(NAME): $(RED)object (*.o) files were deleted$(RESET)"
 	@$(RM) $(OBJECTS)
 	@echo "$(RED)Clean in progres...$(RESET)"
-#$(MAKE) -C $(MINILIBX_PATH) clean
-#	@cd $(MAKE_NOPRINT) $@
+	@echo "$(GREEN)$(NAME): $(BLUE)Sanitized!$(RESET)"
 
 # Removing .o files, .a files
 fclean: clean
 	@echo "$(GREEN)$(NAME): $(RED)was deleted$(RESET)"
 	@$(RM) $(BINS_PATH)$(EXECUTABLE)
-#	@$(RM) $(LIBS_PATH)$(NAME)
-#	@cd $(LIBS_PATH)libft && $(MAKE_NOPRINT) $@
 
 norma:
 	norminette $(SOURCES)
