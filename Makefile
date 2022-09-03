@@ -6,7 +6,7 @@
 #    By: rlins <rlins@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 19:15:33 by rlins             #+#    #+#              #
-#    Updated: 2022/09/03 20:22:17 by rlins            ###   ########.fr        #
+#    Updated: 2022/09/03 20:24:03 by rlins            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ MKDIR = mkdir -p
 SRC_FILES = pipex.c test6.c
 #test1.c test2.c test3.c test4.c test5.c
 
-SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
-OBJ_FILES = $(patsubst %.c, %.o, $(SRC_FILES))
-OBJECTS = $(addprefix $(OBJS_PATH), $(OBJ_FILES))
-EXECUTABLE = pipex
+SOURCES 	= $(addprefix $(SRCS_PATH), $(SRC_FILES))
+OBJ_FILES 	= $(patsubst %.c, %.o, $(SRC_FILES))
+OBJECTS 	= $(addprefix $(OBJS_PATH), $(OBJ_FILES))
+EXECUTABLE 	= pipex
 
 # Targets
 all: $(NAME)
@@ -58,7 +58,6 @@ $(NAME): $(OBJECTS)
 $(OBJS_PATH)%.o : $(SRCS_PATH)%.c $(HEADERS_PATH)*.h
 	$(MKDIR) $(OBJS_PATH)
 	$(CC) $(FLAGS) -c $< -I $(HEADERS_PATH) -o $@
-#$(MAKE) -C
 
 # Creates the executable file $(EXECUTABLE) to test development
 main:	./apps/app.c
