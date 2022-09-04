@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:36:17 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/04 10:42:59 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/04 18:56:32 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ char	*ft_strchr(const char *s, int c);
 int		ft_isascii(int argument);
 
 /**
- * @brief Responsable to identify the new line, add a new (if found)
+ * @brief It will to identify the new line, add a new (if found)
  * and return the current line. It will clean the first line until the
  * break line.
  * @param text to analyze and 'substring' until de break line.
@@ -117,10 +117,10 @@ char	*fix_line(char	*text);
 
 /**
  * @brief Will retrieve the begin of new sentence. This was the 'dirty' the
- * previews sentence.What was discarted in previews sentence, is necessary
+ * previews sentence.What was discarded in previews sentence, is necessary
  * to the next, and this function will
  * get just this part of text.
- * @param acc - The Accummulator (previews static variable)
+ * @param acc - The Accumulator (previews static variable)
  * @return char* - Part of sentence, that will be used, in the next iteration
  */
 char	*get_newtext(char	*acc);

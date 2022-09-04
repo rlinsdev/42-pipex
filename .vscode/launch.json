@@ -10,6 +10,10 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/bin/pipex", //path to your programs exe and exe name
 			"args": [
+				"files/in",
+				"cat",
+				"tr ' ' '+'",
+				"files/out"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
