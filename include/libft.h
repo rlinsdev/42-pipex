@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:36:17 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/04 10:36:49 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/04 10:42:59 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 
 void	ft_free(char* ptr);
 char	*ft_strdup(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
 char	*get_next_line(int fd);
 int		ft_printf(const char* str, ...);
@@ -45,6 +44,17 @@ int		ft_print_hexa(unsigned int nbr, char spec);
 void	ft_putchar(char c);
 int		ft_putstr(char* str);
 char*	ft_itoa_base(unsigned long long nbr, char* base);
+
+/**
+* @brief Allocates (with malloc(3)) and returns a new
+* string, which is the result of the concatenation
+* of ’s1’ and ’s2’.
+* @param s1: The prefix string.
+* @param s2: The suffix string.
+* @return The new string.
+NULL if the allocation fails.
+*/
+char	*ft_strjoin(char const *s1, char const *s2);
 
 /**
  * @brief Searches the first n bytes of the given string
