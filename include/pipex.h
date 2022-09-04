@@ -6,20 +6,25 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/04 10:08:00 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/04 16:38:20 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-// # include "../lib/minilibx-linux/mlx.h"
-# include "./libft.h"
-# include <unistd.h> //Execve
-#include <stdio.h> // printf - remover
+//# include "./libft.h"
+# include <libft.h>
+# include <unistd.h> //Execve, fork, dup
+#include <string.h> // strerror
 // # include <fcntl.h> // To Open a file
-// #include <X11/keysym.h> // Type key code pressed
-// #include <X11/X.h> // Type event em mask that hooks call
+
+// # define STDIN		0
+// # define STDOUT		1
+# define STDERR		2 // TODO: Está certo este 'file descriptor'?
+
+# define ERROR_ARGS 	1
+# define E_ARGS_MSG "\nError code 1. Invalid number of arguments. Expected 5\n"
 
 
 /**
@@ -31,6 +36,10 @@
  */
 int	start(int argc, char **argv, char **envp);
 
+
+
+void	error_hanler(int code);
+
 //Testes - deletar depois
 // int	startTest(int argc, char **argv);
 // int	startTest2(int argc, char **argv);
@@ -39,14 +48,6 @@ int	start(int argc, char **argv, char **envp);
 // int	startTest5(int argc, char **argv);
 int	startTest6(int argc, char **argv, char **envp);
 
-//
-// Utils
-//
-/**
-* @brief Calculates the length of a given string.
-* @param arg as an argument
-* @return returns its length
-*/
-size_t	ft_strlen(const char *arg);
+
 
 #endif
