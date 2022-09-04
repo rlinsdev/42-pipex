@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/03 20:28:51 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/03 20:41:33 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
  * @brief First method in project.
  * @param argc Arguments count
  * @param argv Arguments Vector
+ * @param envp Environment pointer (PATH)
  * @return int
  */
-int	start(int argc, char **argv);
+int	start(int argc, char **argv, char **envp);
 
 //Testes - deletar depois
 // int	startTest(int argc, char **argv);
@@ -37,5 +38,15 @@ int	start(int argc, char **argv);
 // int	startTest4(int argc, char **argv);
 // int	startTest5(int argc, char **argv);
 int	startTest6(int argc, char **argv, char **envp);
+
+//
+// Utils
+//
+/**
+* @brief Calculates the length of a given string.
+* @param arg as an argument
+* @return returns its length
+*/
+size_t	ft_strlen(const char *arg);
 
 #endif

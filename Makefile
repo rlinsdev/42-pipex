@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: rlins <rlins@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/28 19:15:33 by rlins             #+#    #+#              #
-#    Updated: 2022/09/03 20:32:46 by rlins            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = pipex
 
 # Collors
@@ -39,7 +27,7 @@ MKDIR = mkdir -p
 #MAKE_NOPRINT = $(MAKE) --no-print-directory
 
 # Files
-SRC_FILES = pipex.c test6.c
+SRC_FILES = pipex.c ft_strlen.c
 #test1.c test2.c test3.c test4.c test5.c
 
 SOURCES 	= $(addprefix $(SRCS_PATH), $(SRC_FILES))
