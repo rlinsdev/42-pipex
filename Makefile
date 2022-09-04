@@ -1,29 +1,17 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: rlins <rlins@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/28 19:15:33 by rlins             #+#    #+#              #
-#    Updated: 2022/09/03 09:52:11 by rlins            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = pipex
 
 # Collors
-GREEN = \033[0;32m
-RED = \033[0;31m
-BLUE = \033[0;34m
-RESET = \033[0m
+GREEN 	= \033[0;32m
+RED 	= \033[0;31m
+BLUE 	= \033[0;34m
+RESET 	= \033[0m
 
 # Paths
-HEADERS_PATH = ./include/
-SRCS_PATH = ./src/
-OBJS_PATH = ./obj/
-LIBS_PATH = ./lib/
-BINS_PATH = ./bin/
+HEADERS_PATH 	= ./include/
+SRCS_PATH 		= ./src/
+OBJS_PATH 		= ./obj/
+LIBS_PATH 		= ./lib/
+BINS_PATH 		= ./bin/
 
 # Compilation
 CC = gcc -g
@@ -39,8 +27,8 @@ MKDIR = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 
 # Files
-SRC_FILES = pipex.c \
-			test1.c test2.c test3.c test4.c test5.c test6.c
+SRC_FILES = pipex.c
+#test1.c test2.c test3.c test4.c test5.c test6.c
 
 SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
 OBJ_FILES = $(patsubst %.c, %.o, $(SRC_FILES))
@@ -90,6 +78,7 @@ fclean: clean
 	@$(RM) $(BINS_PATH)$(EXECUTABLE)
 	@$(RM) $(LIBS_PATH)$(NAME)
 	@cd $(LIBS_PATH)libft && $(MAKE_NOPRINT) $@
+	@echo "$(GREEN)$(NAME): $(BLUE)Sanitized!$(RESET)"
 
 norma:
 	norminette $(SOURCES)
