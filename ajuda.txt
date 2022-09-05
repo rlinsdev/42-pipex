@@ -1,0 +1,2 @@
+./bin/pipex file-in "cat" "wc -l" file-out
+cat file-in | wc -l > file-out
