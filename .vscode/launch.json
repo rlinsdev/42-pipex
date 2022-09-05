@@ -10,10 +10,10 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/bin/pipex", //path to your programs exe and exe name
 			"args": [
-				"files/in",
+				"files/file-in",
 				"cat",
 				"tr ' ' '+'",
-				"files/out"
+				"files/file-out"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
@@ -28,6 +28,30 @@
 				}
 			],
 			"preLaunchTask": "Build",
+		},
+		{
+			"name": "gdb",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceRoot}/bin/pipex",
+			"args": [
+				"files/file-in",
+				"cat",
+				"tr ' ' '+'",
+				"files/file-out"
+			],
+			"stopAtEntry": false,
+			"cwd": "${workspaceRoot}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+				}
+			],
+			"miDebuggerPath": "/usr/bin/gdb"
 		}
 	]
 }
