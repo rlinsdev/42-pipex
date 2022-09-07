@@ -1,2 +1,8 @@
 ./bin/pipex file-in "cat" "wc -l" file-out
 cat file-in | wc -l > file-out
+
+argv[0]: /home/rlins/Projects/42/Pipex/bin/pipex
+argv[1]: files/file-in
+argv[2]: cat
+argv[3]: wc -l
+argv[4]: files/file-out

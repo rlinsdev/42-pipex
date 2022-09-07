@@ -6,17 +6,42 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:15:39 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/07 10:04:43 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/07 20:22:21 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
 
+void	error_data_handler (t_data data)
+{
+	if (data.pipe_result == -1)
+	{
+		ft_printf("%s", E_PIPE_MSG);
+		exit(1);
+	}
+	if (data.fd_in == -1)
+	{
+		ft_printf("%s", ACCESS_DEN);
+		exit(1);
+	}
+	if (data.fd_out == -1)
+	{
+		ft_printf("%s", E_INV_PARA);
+		exit(1);
+	}
+	if (data.pid == -1)
+	{
+		ft_printf("%s", "Was not possible to generate fork");
+		exit(1);
+	}
+}
+
 void	error_handler(int code)
 {
 	// TODO: Chamar PrintF, nao write
 	if (code == ERROR_ARGS)
+	{
 		write(STDERR, E_ARGS_MSG, ft_strlen(E_ARGS_MSG));
-
-	exit(code);
+		exit(code);
+	}
 }

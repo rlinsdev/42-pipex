@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/07 10:04:23 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/07 20:36:08 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,25 @@
 
 
 # define ERROR_ARGS 	1
-# define E_ARGS_MSG "\nError Code 1. Invalid number of arguments. Expected 5 \nSample: ./bin/pipex file1 cmd1 cmd2 file2\n\n"
-
+# define ERROR_PIPE 	2
+# define E_ARGS_MSG "Error Code 1. Invalid number of arguments. Expected 5 \nSample: ./bin/pipex file1 cmd1 cmd2 file2\n"
+# define E_PIPE_MSG "Error code 2. Problems to create Pipe\n"
+# define ACCESS_DEN "The action failed.!\n"
+# define E_INV_PARA "Invalid input file param. Follow: ./pipex [file1] [cmd1] [cmd2] [file2]\n"
 
 typedef struct s_data
 {
+	int argc;
+	char **argv;
+	char **envp;
 	int	fd_in;
 	int	fd_out;
+	int	pipe_fd[2];
+	int pipe_result;
+	pid_t	pid;
+	int	status;
+	char **cmd; // TODO: Inicializar
+	char *path; // TODO: Inicializar
 } t_data;
 
 
@@ -63,6 +75,9 @@ int	start(int argc, char **argv, char **envp);
  */
 void	error_handler(int code);
 
+
+void	error_data_handler(t_data data);
+
 /**
  * @brief
  *
@@ -79,7 +94,7 @@ int	file_open(char *file, int mode);
 // int	startTest4(int argc, char **argv);
 // int	startTest5(int argc, char **argv);
 // int	startTest6(int argc, char **argv, char **envp);
-int	startTest7(int argc, char **argv, char **envp);
+//int	startTest7(int argc, char **argv, char **envp);
 
 
 
