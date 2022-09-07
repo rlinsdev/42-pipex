@@ -22,12 +22,12 @@ FLAGS =
 LEAK = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 
 # Bash commands
-RM = rm -f # -f Force
-MKDIR = mkdir -p
+RM 			 = rm -f # -f Force
+MKDIR 		 = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 
 # Files
-SRC_FILES = pipex.c error_handler.c validation.c
+SRC_FILES = pipex.c error_handler.c validation.c file_handler.c test7.c
 #test1.c test2.c test3.c test4.c test5.c test6.c
 
 SOURCES 	= $(addprefix $(SRCS_PATH), $(SRC_FILES))

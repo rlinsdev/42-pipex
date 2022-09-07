@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/04 18:54:00 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/07 10:04:23 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 
 //# include "./libft.h"
 # include <libft.h>
-# include <unistd.h> //Execve, fork, dup, dump2, write,
+# include <unistd.h> //Execve, fork, dup, dump2, write, pipe
 # include <stdio.h> // perror
 # include <string.h> // strerror
 # include <fcntl.h> // To Open a file
+# include <sys/wait.h> // waitpid
 
-// # define STDIN		0
-// # define STDOUT		1
+# define IN 	0
+# define OUT 	1
+
+// Child process - File descriptors code
+# define STDIN		0
+# define STDOUT		1
 # define STDERR		2 // TODO: fileDescriptor 2
 
 # define GREY 			"\033[0;90m"
@@ -31,6 +36,14 @@
 
 # define ERROR_ARGS 	1
 # define E_ARGS_MSG "\nError Code 1. Invalid number of arguments. Expected 5 \nSample: ./bin/pipex file1 cmd1 cmd2 file2\n\n"
+
+
+typedef struct s_data
+{
+	int	fd_in;
+	int	fd_out;
+} t_data;
+
 
 
 /**
@@ -57,13 +70,16 @@ void	error_handler(int code);
  */
 void validate_files(char **argv);
 
+int	file_open(char *file, int mode);
+
 //Testes - Del this
 // int	startTest(int argc, char **argv);
 // int	startTest2(int argc, char **argv);
 // int	startTest3(int argc, char **argv);
 // int	startTest4(int argc, char **argv);
 // int	startTest5(int argc, char **argv);
-int	startTest6(int argc, char **argv, char **envp);
+// int	startTest6(int argc, char **argv, char **envp);
+int	startTest7(int argc, char **argv, char **envp);
 
 
 

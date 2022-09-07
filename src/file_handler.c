@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app.c                                              :+:      :+:    :+:   */
+/*   file_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 18:55:06 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/07 06:28:41 by rlins            ###   ########.fr       */
+/*   Created: 2022/09/05 07:22:53 by rlins             #+#    #+#             */
+/*   Updated: 2022/09/06 17:32:23 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
 
-/**
- * @brief Main Class of program
- * @param argc Arguments Count
- * @param argv Arguments Vector
- * @param envp Contains all possible paths where the system might store the
- * program
- * @return int
- */
-int	main(int argc, char **argv, char **envp)
+int	file_open(char *file, int mode)
 {
-	// int i = 0;
-	// int j = 0;
-	// while (envp[i][j] != '\0')
-	// {
-	// 	ft_printf("%s\n", envp[i][j]);
-	// 	j++;
-	// }
-	start(argc, argv, envp);
-	return (0);
+	if (mode == IN)
+	{
+
+	}
+	else
+	{
+		/* Flags. Itś possible add multiple flags.
+		 * (Truncated to 0 if something exist in file),
+		 * (if file does not exist, create)
+		 * (read and write)
+		 */
+		return (open(file, O_TRUNC | O_CREAT | O_RDWR, 0644));
+	}
 }
