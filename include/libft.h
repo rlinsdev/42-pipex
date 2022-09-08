@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:36:17 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/07 10:04:13 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/08 09:14:45 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int		ft_print_hexa(unsigned int nbr, char spec);
 void	ft_putchar(char c);
 int		ft_putstr(char* str);
 char*	ft_itoa_base(unsigned long long nbr, char* base);
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 /**
 * @brief Allocates (with malloc(3)) and returns a new
