@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/07 20:36:08 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/08 20:34:59 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,25 @@
 # define ERROR_ARGS 	1
 # define ERROR_PIPE 	2
 # define E_ARGS_MSG "Error Code 1. Invalid number of arguments. Expected 5 \nSample: ./bin/pipex file1 cmd1 cmd2 file2\n"
-# define E_PIPE_MSG "Error code 2. Problems to create Pipe\n"
-# define ACCESS_DEN "The action failed.!\n"
-# define E_INV_PARA "Invalid input file param. Follow: ./pipex [file1] [cmd1] [cmd2] [file2]\n"
+# define E_PIPE_MSG "Problems to create Pipe"
+# define ACCESS_DEN "The action failed!\n"
+# define E_OPEN_OUT "Invalid output file"
 
 typedef struct s_data
 {
 	int argc;
 	char **argv;
 	char **envp;
-	int	fd_in;
-	int	fd_out;
-	int	pipe_fd[2];
-	int pipe_result;
-	pid_t	pid;
-	int	status;
-	char **cmd; // TODO: Inicializar
-	char *path; // TODO: Inicializar
+	int	fd_in; // OK (InFile)
+	int	fd_out; // OK (outFile)
+	int	pipe_fd[2]; //OK (Tube)
+	pid_t	pid1; // OK
+	pid_t	pid2; // OK
+	char *cmd; // OK
+	char **cmd_path; // OK
+	char **cmd_args; // OK
+	char *path; // OK
+	int pipe_status;
 } t_data;
 
 
@@ -67,16 +69,23 @@ typedef struct s_data
  */
 int	start(int argc, char **argv, char **envp);
 
-
 /**
- * @brief
- *
+ * @brief Verify errors in app - Number of params
  * @param code
  */
-void	error_handler(int code);
+void	error_args_handler(int code);
 
+/**
+ * @brief Verify errors in app - File Descriptor error
+ * @param data Obj Data
+ */
+void	error_fd_handler (t_data data);
 
-void	error_data_handler(t_data data);
+/**
+ * @brief Verify errors in app - Pipe return
+ * @param data obj Data
+ */
+void	error_pipe_handler(t_data data);
 
 /**
  * @brief
@@ -85,7 +94,16 @@ void	error_data_handler(t_data data);
  */
 void validate_files(char **argv);
 
+/**
+ * @brief Open files with path in param
+ * @param file path of file
+ * @param mode if will be in or out
+ * @return int File descriptor Code
+ */
 int	file_open(char *file, int mode);
+
+void	child_process_free(t_data *data);
+void	main_process_free(t_data *data);
 
 //Testes - Del this
 // int	startTest(int argc, char **argv);
