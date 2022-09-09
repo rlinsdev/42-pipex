@@ -27,7 +27,8 @@ MKDIR 		 = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 
 # Files
-SRC_FILES = pipex.c error_handler.c validation.c file_handler.c free.c
+SRC_FILES = pipex.c error_handler.c validation.c file_handler.c free.c \
+			execute_cmd.c
 #test1.c test2.c test3.c test4.c test5.c test6.c
 
 SOURCES 	= $(addprefix $(SRCS_PATH), $(SRC_FILES))
@@ -62,7 +63,7 @@ main:	./apps/app.c
 
 # Compile program and execute main file
 run: all main
-	@$(BINS_PATH)$(EXECUTABLE)
+	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "cat" "wc -l" ./files/file-out
 
 # Sanitize
 clean:
