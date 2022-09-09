@@ -1,5 +1,12 @@
 ./bin/pipex file-in "cat" "wc -l" file-out
-cat file-in | wc -l > file-out
+	ERRO - ACTION FAILED
+
+./bin/pipex ./files/file-in "cat" "wc -l" ./files/file-out
+
+cat ./files/file-in | wc -l > ./files/file-out
+	COMMANDO VIA TERMINAL
+
+
 
 argv[0]: /home/rlins/Projects/42/Pipex/bin/pipex
 argv[1]: files/file-in
