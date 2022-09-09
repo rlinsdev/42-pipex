@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/08 20:34:59 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/08 22:47:47 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define E_PIPE_MSG "Problems to create Pipe"
 # define ACCESS_DEN "The action failed!\n"
 # define E_OPEN_OUT "Invalid output file"
+# define INV_CMD "Invalid command\n"
 
 typedef struct s_data
 {
@@ -102,8 +103,11 @@ void validate_files(char **argv);
  */
 int	file_open(char *file, int mode);
 
+void	second_child(t_data data);
+void	first_child(t_data data);
 void	child_process_free(t_data *data);
 void	main_process_free(t_data *data);
+void	close_pipes_fd(t_data *data);
 
 //Testes - Del this
 // int	startTest(int argc, char **argv);
