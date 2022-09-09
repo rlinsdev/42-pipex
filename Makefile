@@ -47,13 +47,13 @@ libft:
 
 # Creates static library libft.a inside ./libs/ folder
 $(NAME): $(OBJECTS)
-	cp $(LIBS_PATH)/libft.a $(LIBS_PATH)$(NAME)
-	ar -rcs $(LIBS_PATH)$(NAME) $(OBJECTS)
+	@cp $(LIBS_PATH)/libft.a $(LIBS_PATH)$(NAME)
+	@ar -rcs $(LIBS_PATH)$(NAME) $(OBJECTS)
 
 # Creates object files for ft_pipex
 $(OBJS_PATH)%.o : $(SRCS_PATH)%.c $(HEADERS_PATH)*.h
-	$(MKDIR) $(OBJS_PATH)
-	$(CC) $(FLAGS) -c $< -I $(HEADERS_PATH) -o $@
+	@$(MKDIR) $(OBJS_PATH)
+	@$(CC) $(FLAGS) -c $< -I $(HEADERS_PATH) -o $@
 #$(MAKE) -C
 
 # Creates the executable file $(EXECUTABLE) to test development
