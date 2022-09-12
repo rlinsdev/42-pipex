@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:59:00 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/12 08:40:32 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/12 19:52:34 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ static char	*get_cmd (char **paths, char *cmd)
 	return (NULL);
 }
 
-// static void	call_run(t_data data)
-// {
-// 	data.cmd = get_cmd(data);
-// 	if (!data.cmd)
-// 	{
-// 		child_process_free(&data);
-// 		perror(INV_CMD);
-// 		exit(1);
-// 	}
-// 	execve(data.cmd, data.cmd_args, data.envp);
-// }
+static void	call_run(t_data data)
+{
+	data.cmd = get_cmd(data.cmd_path, data.cmd_args[0]);
+	if (!data.cmd)
+	{
+		child_process_free(&data);
+		perror(INV_CMD);
+		exit(1);
+	}
+	execve(data.cmd, data.cmd_args, data.envp);
+}
 
 void	first_child(t_data data)
 {
@@ -48,15 +48,7 @@ void	first_child(t_data data)
 	close(data.pipe_fd[0]);
 	dup2(data.fd_in, 0);
 	data.cmd_args = ft_split(data.argv[2], ' ');
-	//call_run(data);
-	data.cmd = get_cmd(data.cmd_path, data.cmd_args[0]);
-	if (!data.cmd)
-	{
-		child_process_free(&data);
-		// msg(INV_CMD);
-		exit(1);
-	}
-	execve(data.cmd, data.cmd_args, data.envp);
+	call_run(data);
 }
 
 void	second_child(t_data data)
@@ -65,13 +57,5 @@ void	second_child(t_data data)
 	close(data.pipe_fd[1]);
 	dup2(data.fd_out, 1);
 	data.cmd_args = ft_split(data.argv[3], ' ');
-	//call_run(data);
-	data.cmd = get_cmd(data.cmd_path, data.cmd_args[0]);
-	if (!data.cmd)
-	{
-		child_process_free(&data);
-		// msg(INV_CMD);
-		exit(1);
-	}
-	execve(data.cmd, data.cmd_args, data.envp);
+	call_run(data);
 }
