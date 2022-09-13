@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:21 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/08 22:47:32 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/12 21:11:22 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	start(int argc, char **argv, char **envp)
 	error_fd_handler(data);
 	data.pipe_status = pipe(data.pipe_fd);
 	error_pipe_handler(data);
-	//data.path = find_path(envp);
 	data.cmd_path = ft_split(data.path, ':');
 	data.pid1 = fork();
 	if (data.pid1 == 0)

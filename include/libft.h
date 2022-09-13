@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:36:17 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/08 09:14:45 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/12 21:05:21 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_free(char* ptr);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
 char	*get_next_line(int fd);
-// TODO: Colocar cabeçaho
 int		ft_printf(const char* str, ...);
 int		ft_print_char(char c);
 int		ft_print_string(char* str);

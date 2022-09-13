@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:29:57 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/08 22:47:50 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/12 20:13:16 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	main_process_free(t_data *data)
 	i = 0;
 	close(data->fd_in);
 	close(data->fd_out);
+	// Run through all paths split in environment paths
 	while (data->cmd_path[i])
 	{
 		free(data->cmd_path[i]);

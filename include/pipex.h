@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/12 19:57:28 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/12 21:11:28 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ typedef struct s_data
 	int pipe_status;
 } t_data;
 
-
-
 /**
  * @brief First method in project.
  * @param argc Arguments count
@@ -92,19 +90,23 @@ int	file_open(char *file, int mode);
 
 void	second_child(t_data data);
 void	first_child(t_data data);
+
+/**
+ * @brief Free all memory from child process
+ * @param data
+ */
 void	child_process_free(t_data *data);
+
+/**
+ * @brief Close File descriptors. Free all split from path variables.
+ * @param data
+ */
 void	main_process_free(t_data *data);
+
+/**
+ * @brief Close File Descriptor from Pipes
+ * @param data
+ */
 void	close_pipes_fd(t_data *data);
-
-//Testes - Del this
-// int	startTest(int argc, char **argv);
-// int	startTest2(int argc, char **argv);
-// int	startTest3(int argc, char **argv);
-// int	startTest4(int argc, char **argv);
-// int	startTest5(int argc, char **argv);
-// int	startTest6(int argc, char **argv, char **envp);
-//int	startTest7(int argc, char **argv, char **envp);
-
-
 
 #endif

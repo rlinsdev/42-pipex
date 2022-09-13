@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:59:00 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/12 19:52:34 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/12 20:23:50 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static char	*get_cmd (char **paths, char *cmd)
 	{
 		tmp = ft_strjoin(*paths, "/");
 		command = ft_strjoin(tmp, cmd);
+		// ft_printf("command: %s\n", command);
+		// ft_printf("tmp: %s\n", tmp);
 		free(tmp);
 		if (access(command, 0) == 0)
 			return (command);
@@ -47,6 +49,7 @@ void	first_child(t_data data)
 	dup2(data.pipe_fd[1], 1);
 	close(data.pipe_fd[0]);
 	dup2(data.fd_in, 0);
+	// cat
 	data.cmd_args = ft_split(data.argv[2], ' ');
 	call_run(data);
 }
@@ -56,6 +59,7 @@ void	second_child(t_data data)
 	dup2(data.pipe_fd[0], 0);
 	close(data.pipe_fd[1]);
 	dup2(data.fd_out, 1);
+	// wc -l
 	data.cmd_args = ft_split(data.argv[3], ' ');
 	call_run(data);
 }
