@@ -6,11 +6,17 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:15:39 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/08 19:48:29 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/13 21:09:25 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
+
+void	error_open_file()
+{
+	perror(E_OPEN_FIL);
+	exit(1);
+}
 
 void	error_pipe_handler(t_data data)
 {
