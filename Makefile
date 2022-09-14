@@ -60,8 +60,8 @@ main:	./apps/app.c
 
 # Compile program and execute main file
 run: all main
-#	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "cat" "wc -l" ./files/file-out
-	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in 'cat' 'cat' ./files/file-out
+	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "cat" "wc -l" ./files/file-out
+#	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in 'cat' 'cat' ./files/file-out
 #	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "ls -l" "wc -l" ./files/file-out
 #	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "grep a1" "wc -w" ./files/file-out
 #	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "ls -l" "wc -l" ./files/file-out
