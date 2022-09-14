@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:21 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/13 13:52:03 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/14 10:19:03 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*path_handler(char **envp)
 	// Find PATH= in envp variable
 	while (ft_strncmp("PATH=", *envp, 5))
 		envp++;
-	return (*envp + 5); // Remove PATH=
+	return (*envp + 5); // Remove 'PATH=' and return all content
 }
 
 /**
@@ -36,7 +36,6 @@ static void	ini_data(t_data *data, int argc, char **argv, char **envp)
 {
 	data->fd_in = -1;
 	data->fd_out = -1;
-	// TODO: init all variables?
 	data->argc = argc;
 	data->argv = argv;
 	data->envp = envp;
@@ -67,12 +66,11 @@ int	start(int argc, char **argv, char **envp)
 	data.pid2 = fork();
 	// When in child process
 	if (data.pid2 == 0)
-		second_child(data);
+		second_child(data); //TODO: Porque eu criei 2 childs?
 	close_pipes_fd(&data);
 	// Wait the execution of child process
 	waitpid(data.pid1, NULL, 0);
 	waitpid(data.pid2, NULL, 0);
 	main_process_free(&data);
-
 	return (0);
 }
