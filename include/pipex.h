@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/12 21:11:28 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/13 21:10:08 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define E_PIPE_MSG "Problems to create Pipe"
 # define ACCESS_DEN "The action failed!\n"
 # define E_OPEN_OUT "Invalid output file"
+# define E_OPEN_FIL "Invalid file"
 # define INV_CMD "Invalid command\n"
 
 typedef struct s_data
@@ -79,6 +80,11 @@ void	error_fd_handler (t_data data);
  * @param data obj Data
  */
 void	error_pipe_handler(t_data data);
+
+/**
+ * @brief Verify error when open a file
+ */
+void	error_open_file();
 
 /**
  * @brief Open files with path in param
