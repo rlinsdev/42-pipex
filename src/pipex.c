@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:21 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/12 21:11:22 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/13 13:52:03 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
  */
 static char	*path_handler(char **envp)
 {
+	// Find PATH= in envp variable
 	while (ft_strncmp("PATH=", *envp, 5))
 		envp++;
 	return (*envp + 5); // Remove PATH=
@@ -50,19 +51,25 @@ int	start(int argc, char **argv, char **envp)
 	if (argc != 5)
 		error_args_handler(ERROR_ARGS);
 	// Open files
-	data.fd_in = file_open(argv[1], IN); // TODO data.argv?
+	data.fd_in = file_open(argv[1], IN);
 	data.fd_out = file_open(argv[data.argc - 1], OUT); // TODO: data.argc?
 	error_fd_handler(data);
+	//
 	data.pipe_status = pipe(data.pipe_fd);
 	error_pipe_handler(data);
 	data.cmd_path = ft_split(data.path, ':');
+	// Create 2 process
 	data.pid1 = fork();
+	// When in child process
 	if (data.pid1 == 0)
 		first_child(data);
+	// Create 2 process
 	data.pid2 = fork();
+	// When in child process
 	if (data.pid2 == 0)
 		second_child(data);
 	close_pipes_fd(&data);
+	// Wait the execution of child process
 	waitpid(data.pid1, NULL, 0);
 	waitpid(data.pid2, NULL, 0);
 	main_process_free(&data);
