@@ -1,5 +1,5 @@
 ./bin/pipex file-in "cat" "wc -l" file-out
-	ERRO - ACTION FAILED
+	ERROR - ACTION FAILED
 
 ./bin/pipex ./files/file-in "cat" "wc -l" ./files/file-out
 
@@ -16,5 +16,4 @@ argv[3]: wc -l
 argv[4]: files/file-out
 
 
-tolmvald
 ./pipex ./files/file-in "cat" "wc -l" ./files/file-out
