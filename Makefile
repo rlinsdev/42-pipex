@@ -15,8 +15,7 @@ BINS_PATH 		= ./bin/
 
 # Compilation
 CC = gcc -g
-#FLAGS = -Wall -Wextra -Werror
-FLAGS =
+FLAGS = -Wall -Wextra -Werror
 
 #Chedk Leak memory
 LEAK = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s
@@ -61,7 +60,11 @@ main:	./apps/app.c
 
 # Compile program and execute main file
 run: all main
-	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "cat" "wc -l" ./files/file-out
+#	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "cat" "wc -l" ./files/file-out
+	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in 'cat' 'cat' ./files/file-out
+#	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "ls -l" "wc -l" ./files/file-out
+#	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "grep a1" "wc -w" ./files/file-out
+#	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "ls -l" "wc -l" ./files/file-out
 
 # Sanitize
 clean:
@@ -83,7 +86,7 @@ norma:
 	norminette $(SOURCES)
 
 valgrind:
-	$(LEAK) $(BINS_PATH)$(EXECUTABLE)
+	$(LEAK) $(BINS_PATH)$(EXECUTABLE) ./files/file-in "cat" "wc -l" ./files/file-out
 
 # Removing and running
 re: fclean all
