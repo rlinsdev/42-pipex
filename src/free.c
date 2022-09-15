@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 20:29:57 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/12 20:13:16 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/14 22:37:33 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	child_process_free(t_data *data)
 
 void	close_pipes_fd(t_data *data)
 {
+	// This is de parent/main process
 	close(data->pipe_fd[0]);
 	close(data->pipe_fd[1]);
 }
