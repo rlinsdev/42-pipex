@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/13 21:10:08 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/15 07:19:14 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define ACCESS_DEN "The action failed!\n"
 # define E_OPEN_OUT "Invalid output file"
 # define E_OPEN_FIL "Invalid file"
+# define E_FORK_PRO "Problem to fork process"
 # define INV_CMD "Invalid command\n"
 
 typedef struct s_data
@@ -44,7 +45,7 @@ typedef struct s_data
 	char **envp;
 	int	fd_in;
 	int	fd_out;
-	int	pipe_fd[2];
+	int	pipe_fd[2]; //[0] = read. [1] = write
 	pid_t	pid1;
 	pid_t	pid2;
 	char *cmd;
@@ -85,6 +86,12 @@ void	error_pipe_handler(t_data data);
  * @brief Verify error when open a file
  */
 void	error_open_file();
+
+/**
+ * @brief Check if Fork process get some error
+ * @param data
+ */
+void	error_fork_handler(t_data data);
 
 /**
  * @brief Open files with path in param

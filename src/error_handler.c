@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:15:39 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/13 21:09:25 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/14 19:27:49 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@ void	error_open_file()
 {
 	perror(E_OPEN_FIL);
 	exit(1);
+}
+
+void	error_fork_handler(t_data data)
+{
+	if (data.pid1 == -1 || data.pid2 == -1)
+	{
+		perror(E_FORK_PRO);
+		exit(1);
+	}
 }
 
 void	error_pipe_handler(t_data data)
@@ -45,6 +54,7 @@ void	error_args_handler(int code)
 {
 	if (code == ERROR_ARGS)
 	{
+		// perror will fetch the most recent errno to interpret
 		perror(E_ARGS_MSG);
 		exit(1);
 	}
