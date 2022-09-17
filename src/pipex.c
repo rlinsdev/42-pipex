@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:21 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/17 13:16:14 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/17 14:04:25 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,32 +58,42 @@ int	start(int argc, char **argv, char **envp)
 {
 	t_data data;
 	ini_data(&data, argc, argv, envp);
+
 	// Must to be 5 elements in count
 	if (argc != 5)
 		error_args_handler(ERROR_ARGS);
+
 	// Open file file-in
 	data.fd_in = file_open(argv[1], IN);
+
 	// Open file file-out
 	data.fd_out = file_open(argv[4], OUT);
 	error_fd_handler(data);
+
 	/* Pipe will store 2 FD. Bytes write in [1] can be read from [0]
 	 * Pipe = communication between process */
 	data.pipe_status = pipe(data.pipe_fd);
 	error_pipe_handler(data);
+
 	/* Create 2 process. Here we must to Fork a process, because after execve
 	 * the program stop, but we don't wanna loose our own process */
+	//Debug: -exec set follow-fork-mode child
 	data.pid1 = fork();
+
 	// When in child process
 	if (data.pid1 == 0)
 		first_child(data);
+
 	/* Create 2 process. Here we must to Fork a process, because after execve
 	 * the program stop, but we don't wanna loose our own process */
+	//Debug: -exec set follow-fork-mode child
 	data.pid2 = fork();
 	// When in child process
 	if (data.pid2 == 0)
 		second_child(data);
 	error_fork_handler(data);
 	close_pipes_fd(&data);
+
 	// Wait the execution of child process. This will avoid zombie process
 	waitpid(data.pid1, NULL, 0); // supervising the children
 	waitpid(data.pid2, NULL, 0);
