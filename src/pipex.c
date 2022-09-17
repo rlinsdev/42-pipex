@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:21 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/17 14:04:25 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/17 17:20:52 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	start(int argc, char **argv, char **envp)
 
 	// Must to be 5 elements in count
 	if (argc != 5)
-		error_args_handler(ERROR_ARGS);
+		error_args_handler(ERROR_ARGS, data);
 
 	// Open file file-in
 	data.fd_in = file_open(argv[1], IN);

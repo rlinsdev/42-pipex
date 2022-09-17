@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/17 12:58:10 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/17 17:42:51 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ int	start(int argc, char **argv, char **envp);
 /**
  * @brief Verify errors in app - Number of params / args
  * @param code Code to identify this error
+ * @param data Data Object - free memory
  */
-void	error_args_handler(int code);
+void	error_args_handler(int code, t_data data);
 
 /**
  * @brief Verify errors in app - File Descriptor error
