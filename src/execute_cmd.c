@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:59:00 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/14 14:38:04 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/17 14:03:29 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,19 @@ static char	*get_cmd (char **paths, char *cmd)
 	char	*aux;
 	char	*command;
 
+	// while through all variables
 	while (*paths)
 	{
-		// /home/rlins/.asdf/shims ESSE CARA NAO EXISTE NO SO. FIZ MERDA?
+		// /home/rlins/.asdf/shims
 		aux = ft_strjoin(*paths, "/");
 		// /home/rlins/.asdf/shims/cat
-		command = ft_strjoin(aux, cmd); // TODO nao daria pra nao usar join??
+		command = ft_strjoin(aux, cmd);
 		free(aux);
 		// Test for access to this command
 		if (access(command, 0) == 0)
 		{
-			/* /user/bin/cat foi o q deu match na 1 exec
-			 * /usr/bin/wc   foi o q deu match na 2 exec */
+			/* /user/bin/[cat] - First Match in first execution
+			 * /usr/bin/[wc][grep]   Second match in second Execution */
 			return (command);
 		}
 		free(command);
@@ -65,17 +66,19 @@ static void	call_run(t_data data)
 void	first_child(t_data data)
 {
 	dup2(data.pipe_fd[1], 1);
-	close(data.pipe_fd[0]); // TODO: Porque dar close neste cara aqui? Ver video
+	// Nothing we want to read, close pipe's read end.
+	close(data.pipe_fd[0]);
 	dup2(data.fd_in, 0);
 	// cat
-	//TODO: TEstar com outros commandos q tem espaço aqui.
 	data.cmd_args = ft_split(data.argv[2], ' ');
 	call_run(data);
 }
 
 void	second_child(t_data data)
 {
+	// Duplicate a file descriptor to another standard output
 	dup2(data.pipe_fd[0], 0);
+	// Nothing to write, close pipe's write end.
 	close(data.pipe_fd[1]);
 	dup2(data.fd_out, 1);
 	// wc -l
