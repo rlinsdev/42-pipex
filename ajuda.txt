@@ -1,23 +1,65 @@
-./bin/pipex file-in "cat" "wc -l" file-out
-	ERROR - ACTION FAILED
+Right execution:
+	./bin/pipex ./files/file-in "cat" "wc -l" ./files/file-out
+	./bin/pipex ./files/file-in "cat" "grep Avengers" ./files/file-out
 
-./bin/pipex ./files/file-in "cat" "wc -l" ./files/file-out
+Error in action:
+	./bin/pipex file-in "cat" "wc -l" file-out
 
+Command in terminal:
+	cat ./files/file-in | wc -l > ./files/file-out
+	cat ./files/file-in | grep Avengers > ./files/file-out
 
-cat ./files/file-in | wc -l > ./files/file-out
-	COMMANDO VIA TERMINAL
+ArgvParams:
+	argv[0]: ./bin/pipex
+	argv[1]: ./files/file-in
+	argv[2]: cat
+	argv[3]: grep Avengers
+	argv[4]: ./files/file-out
 
+Envp variables:
+	...
+	envp[33]: QT_X11_NO_MITSHM=1
+	envp[34]: WINDOWPATH=2
+	envp[35]: PATH=/home/rlins/.asdf/shims:/home/rlins/.asdf/bin:/home/rlins/.local/bin:/home/rlins/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 
+PATH=
+/home/rlins/.asdf/shims
+/home/rlins/.asdf/bin
+/home/rlins/.local/bin
+/home/rlins/.local/bin
+/usr/local/sbin
+/usr/local/bin
+/usr/sbin
+/usr/bin
+/sbin
+/bin
+/usr/games
+/usr/local/games
+/snap/bin
+/snap/bin
 
-argv[0]: /home/rlins/Projects/42/Pipex/bin/pipex
-argv[1]: files/file-in
-argv[2]: cat
-argv[3]: wc -l
-argv[4]: files/file-out
+FD: A file descriptor is a number that uniquely identifies an open file in a computer's operating system. It describes a data resource, and how that resource may be accessed.
 
-
-./pipex ./files/file-in "cat" "wc -l" ./files/file-out
-
+'<' '>' = Redirection operators
 
 Debug in child process - Before fork apply command in debug console:
 '-exec set follow-fork-mode child'
+
+Use perror to debug after call fork()
+
+*We don’t provide enough arguments to pipex.
+*We provide too many arguments to pipex. (Except for bonus)
+*The input file does not exist.
+*The output file does not exist.
+*First command does not exist.
+*Second command does not exist.
+
+-That input file exists, but we did a chmod 000 on it, so we can’t open it.
+-That output file does exist but it can’t be modified (we did a chmod 000 on it too!)
+-The output file exists and can be modified. Did we append or overwrite it?
+-None of the commands exist.
+-One of the commands already contains its access path (ex: "/usr/bin/cat" instead of only "cat" ).
+-The input file is one that generates endlessly, like /dev/random.
+mais testes (acelera):
+e se uma das flags for um espaço ' ' ou uma aspa simples '\''? e se um dos comandos passados não existir? e se nenhum dos comandos passados existirem? e se o input ou o output não tiver permissão pra ser escrito/lido? sempre comparando com o resultado do comando original via terminal. aqui pode ser útil rodar o comando echo $?  para descobrir qual foi o código de retorno do último processo executado pelo terminal, para que sua main reproduza o mesmo comportamento.
+e se os comandos existem, mas o arquivo input não existir? E se um comando não existir e o input não tiver permissão de escrita? Como o bash originalmente se comporta? Seu programa deve emular o mesmo comportamento.
