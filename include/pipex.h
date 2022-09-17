@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/15 07:19:14 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/17 12:58:10 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_data
  * @brief First method in project.
  * @param argc Arguments count
  * @param argv Arguments Vector
- * @param envp Environment pointer (PATH)
+ * @param envp Environment variables/pointer (PATH)
  * @return int
  */
 int	start(int argc, char **argv, char **envp);
@@ -101,7 +101,16 @@ void	error_fork_handler(t_data data);
  */
 int	file_open(char *file, int mode);
 
+/**
+ * @brief The second command in pipe. Child command executed.
+ * @param data
+ */
 void	second_child(t_data data);
+
+/**
+ * @brief First command. Executed like a child to not interrupt main process
+ * @param data
+ */
 void	first_child(t_data data);
 
 /**
