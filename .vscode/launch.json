@@ -12,7 +12,7 @@
 			"args": [
 				"files/file-in",
 				"cat",
-				"wc -l",
+				"grep Avengers",
 				"files/file-out"
 			],
 			"stopAtEntry": false,
@@ -37,7 +37,7 @@
 			"args": [
 				"files/file-in",
 				"cat",
-				"wc -l",
+				"grep Avengers",
 				"files/file-out"
 			],
 			"stopAtEntry": false,
