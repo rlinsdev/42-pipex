@@ -53,13 +53,15 @@ Use perror to debug after call fork()
 *The output file does not exist.
 *First command does not exist.
 *Second command does not exist.
+*That input file exists, but we did a chmod 000 on it, so we can’t open it.
+	'Invalid OutPut'
+	chmod 000 file-in
+*That output file does exist but it can’t be modified (we did a chmod 000 on it too!)
+	'Invalid OutPut'
+	chmod 000 file-out
+*The output file exists and can be modified. Did we append or overwrite it?
+*None of the commands exist.
 
--That input file exists, but we did a chmod 000 on it, so we can’t open it.
--That output file does exist but it can’t be modified (we did a chmod 000 on it too!)
--The output file exists and can be modified. Did we append or overwrite it?
--None of the commands exist.
--One of the commands already contains its access path (ex: "/usr/bin/cat" instead of only "cat" ).
--The input file is one that generates endlessly, like /dev/random.
 mais testes (acelera):
 e se uma das flags for um espaço ' ' ou uma aspa simples '\''? e se um dos comandos passados não existir? e se nenhum dos comandos passados existirem? e se o input ou o output não tiver permissão pra ser escrito/lido? sempre comparando com o resultado do comando original via terminal. aqui pode ser útil rodar o comando echo $?  para descobrir qual foi o código de retorno do último processo executado pelo terminal, para que sua main reproduza o mesmo comportamento.
 e se os comandos existem, mas o arquivo input não existir? E se um comando não existir e o input não tiver permissão de escrita? Como o bash originalmente se comporta? Seu programa deve emular o mesmo comportamento.
