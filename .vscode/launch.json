@@ -11,8 +11,8 @@
 			"program": "${workspaceFolder}/bin/pipex", //path to your programs exe and exe name
 			"args": [
 				"files/file-in",
-				"cat",
-				"grep Avengers",
+				"tr ex ' X'",
+				"tr pi 'P '",
 				"files/file-out"
 			],
 			"stopAtEntry": false,
@@ -36,8 +36,8 @@
 			"program": "${workspaceRoot}/bin/pipex",
 			"args": [
 				"files/file-in",
-				"cat",
-				"grep Avengers",
+				"tr ex ' X'",
+				"tr pi 'P '",
 				"files/file-out"
 			],
 			"stopAtEntry": false,
