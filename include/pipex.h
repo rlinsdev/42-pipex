@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/17 17:42:51 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/18 10:05:28 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,10 @@ void	error_fork_handler(t_data data);
  * @brief Open files with path in param
  * @param file path of file
  * @param mode if will be in or out
+ * @param data In case of error, free from memory
  * @return int File descriptor Code
  */
-int	file_open(char *file, int mode);
+int	file_open(char *file, int mode, t_data data);
 
 /**
  * @brief The second command in pipe. Child command executed.

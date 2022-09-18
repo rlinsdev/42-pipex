@@ -6,14 +6,16 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:15:39 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/17 17:40:29 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/18 10:05:59 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
 
-void	error_open_file()
+void	error_open_file(t_data data)
 {
+	// Free from memory
+	main_process_free(&data);
 	perror(E_OPEN_FIL);
 	exit(1);
 }

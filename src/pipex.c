@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:21 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/17 17:20:52 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/18 10:01:31 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int	start(int argc, char **argv, char **envp)
 		error_args_handler(ERROR_ARGS, data);
 
 	// Open file file-in
-	data.fd_in = file_open(argv[1], IN);
+	data.fd_in = file_open(argv[1], IN, data);
 
 	// Open file file-out
-	data.fd_out = file_open(argv[4], OUT);
+	data.fd_out = file_open(argv[4], OUT, data);
 	error_fd_handler(data);
 
 	/* Pipe will store 2 FD. Bytes write in [1] can be read from [0]
