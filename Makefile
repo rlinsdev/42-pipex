@@ -26,7 +26,8 @@ MKDIR 		 = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 
 # Files
-SRC_FILES = pipex.c error_handler.c file_handler.c free.c execute_cmd.c
+SRC_FILES = pipex.c error_handler.c file_handler.c free.c execute_cmd.c \
+			tokenization.c
 
 SOURCES 	= $(addprefix $(SRCS_PATH), $(SRC_FILES))
 OBJ_FILES 	= $(patsubst %.c, %.o, $(SRC_FILES))

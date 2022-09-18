@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/18 10:05:28 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/18 17:44:27 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,22 @@ void	main_process_free(t_data *data);
  * @param data
  */
 void	close_pipes_fd(t_data *data);
+
+/**
+ * @brief
+ *
+ * @param cmd
+ */
+void	token_rollback(char **cmd);
+
+/**
+ * @brief Get the token object
+ *
+ * @param cmd
+ * @param limiter
+ * @param to
+ * @param from
+ */
+void	get_token(char *command, char limiter, char tokenId, char space);
 
 #endif
