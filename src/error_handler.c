@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:15:39 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/18 10:05:59 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 12:18:03 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	error_fd_handler (t_data data)
 	{
 		main_process_free(&data);
 		perror(ACCESS_DEN);
-		exit(1);
+		exit(0);
 	}
 	if (data.fd_out == -1)
 	{
