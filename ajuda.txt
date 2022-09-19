@@ -63,5 +63,10 @@ Use perror to debug after call fork()
 *None of the commands exist.
 
 mais testes (acelera):
-e se uma das flags for um espaço ' ' ou uma aspa simples '\''? e se um dos comandos passados não existir? e se nenhum dos comandos passados existirem? e se o input ou o output não tiver permissão pra ser escrito/lido? sempre comparando com o resultado do comando original via terminal. aqui pode ser útil rodar o comando echo $?  para descobrir qual foi o código de retorno do último processo executado pelo terminal, para que sua main reproduza o mesmo comportamento.
+*e se uma das flags for um espaço ' ' ou uma aspa simples '\''?
+*e se um dos comandos passados não existir?
+*e se nenhum dos comandos passados existirem?
+*e se o input ou o output não tiver permissão pra ser escrito/lido?
+*sempre comparando com o resultado do comando original via terminal.
+-aqui pode ser útil rodar o comando echo $?  para descobrir qual foi o código de retorno do último processo executado pelo terminal, para que sua main reproduza o mesmo comportamento.
 e se os comandos existem, mas o arquivo input não existir? E se um comando não existir e o input não tiver permissão de escrita? Como o bash originalmente se comporta? Seu programa deve emular o mesmo comportamento.
