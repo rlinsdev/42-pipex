@@ -6,14 +6,15 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:10:41 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/19 10:57:22 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 17:23:41 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
 
 /**
- * @brief Verify if chari is a backslash (\). This will happened when in command exist ' ' (white space between single quotes)
+ * @brief Verify if char is a backslash (\). This will happened when in
+ * command exist ' ' (white space between single quotes)
  * @param str
  * @return int
  */
@@ -31,10 +32,8 @@ void	restore_spaces(char **exec_args)
 		str = *exec_args;
 		while (*str)
 		{
-			// Special Char mark
 			if (*str == -1)
 			{
-				// Restore space
 				*str = ' ';
 			}
 			str++;
@@ -63,17 +62,14 @@ void	replace_spaces(char *str)
 	{
 		if (*str == ' ')
 		{
-			// Special Char to mark where space was from
 			*str = -1;
 		}
 		str++;
 	}
 	if (*str)
 		str++;
-	// if is not the end
 	if (*str)
 	{
-		// call recursive again
 		replace_spaces(str);
 	}
 }
@@ -82,7 +78,6 @@ int	contains_backslash(char *str)
 {
 	while (*str)
 	{
-		// if the char is backslash
 		if (is_backslash(*str))
 			return (1);
 		str++;

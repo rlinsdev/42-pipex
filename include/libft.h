@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:36:17 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/12 21:05:21 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 17:38:38 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include <stdarg.h> // All the macros to use variable args (va_list)
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 128
+#  define BUFFER_SIZE	128
+# endif
 
 # define HEX_BASE_LOWER	"0123456789abcdef"
 # define HEX_BASE_UPPER	"0123456789ABCDEF"
@@ -29,23 +30,22 @@
 # define PTR_NULL		"(nil)"
 # define INI_PTR		"0x"
 # define NEG_PTR		"FFFFFFFF"
-# endif
 
-void	ft_free(char* ptr);
+void	ft_free(char *ptr);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
 char	*get_next_line(int fd);
-int		ft_printf(const char* str, ...);
+int		ft_printf(const char *str, ...);
 int		ft_print_char(char c);
-int		ft_print_string(char* str);
+int		ft_print_string(char *str);
 int		ft_print_dec_int(long nbr);
-int		ft_print_pointer(void* ptr);
+int		ft_print_pointer(void *ptr);
 int		ft_print_hexa(unsigned int nbr, char spec);
 void	ft_putchar(char c);
-int		ft_putstr(char* str);
-char*	ft_itoa_base(unsigned long long nbr, char* base);
+int		ft_putstr(char *str);
+char	*ft_itoa_base(unsigned long long nbr, char *base);
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 /**
 * @brief Allocates (with malloc(3)) and returns a new
@@ -65,13 +65,15 @@ char	*ft_strjoin(char const *s1, char const *s2);
  * @param s1 String to search
  * @param s2 Sentence
  * @param len Number of bytes
- * @return char*. A pointer to the first character of the first occurrence of * 		s2. A pointer to s1 if s2 is empty. NULL if s2 occurs nowhere in s1.
+ * @return char*. A pointer to the first character of the first occurrence
+ * of s2. A pointer to s1 if s2 is empty. NULL if s2 occurs nowhere in s1.
  */
 char	*ft_strnstr(const char *s1, const char *s2, size_t len);
 
 /**
-* @brief Allocates (with malloc(3)) and returns an array *of strings obtained by splitting ’s’ using the *character ’c’ as a delimiter. The array must end
-*with a NULL pointer.
+* @brief Allocates (with malloc(3)) and returns an array *of strings
+* obtained by splitting ’s’ using the *character ’c’ as a delimiter.
+* The array must end with a NULL pointer.
 * @param str: The string to be split.
 * @param c: The delimiter character.
 * @return The array of new strings resulting from the split.

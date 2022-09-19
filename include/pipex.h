@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/19 16:02:21 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 17:34:34 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,16 @@
 
 # define IN 	0
 # define OUT 	1
-
-// Child process - File descriptors code
 # define STDIN		0
 # define STDOUT		1
 # define STDERR		2
 
 # define ERROR_ARGS 	1
 # define ERROR_PIPE 	2
-# define E_ARGS_MSG "Invalid number of arguments. Expected 5 \nSample: ./bin/pipex file1 cmd1 cmd2 file2\n"
+# define E_ARGS_MSG "Invalid number of arguments. Expected 5"
 # define E_PIPE_MSG "Problems to create Pipe"
 # define ACCESS_DEN "The action failed!\n"
 # define E_OPEN_OUT "Invalid output file"
-// # define E_OPEN_FIL "Invalid file"
 # define E_OPEN_FIL "No such file or directory"
 # define E_FORK_PRO "Problem to fork process"
 # define INV_CMD "Invalid command"
@@ -43,20 +40,20 @@
 
 typedef struct s_data
 {
-	int argc;
-	char **argv;
-	char **envp;
-	int	fd_in;
-	int	fd_out;
-	int	pipe_fd[2]; //[0] = read. [1] = write
+	int		argc;
+	char	**argv;
+	char	**envp;
+	int		fd_in;
+	int		fd_out;
+	int		pipe_fd[2];
 	pid_t	pid1;
 	pid_t	pid2;
-	char *cmd;
-	char **cmd_path;
-	char **cmd_args;
-	char *path;
-	int pipe_status;
-} t_data;
+	char	*cmd;
+	char	**cmd_path;
+	char	**cmd_args;
+	char	*path;
+	int		pipe_status;
+}	t_data;
 
 /**
  * @brief First method in project.
@@ -65,7 +62,7 @@ typedef struct s_data
  * @param envp Environment variables/pointer (PATH)
  * @return int
  */
-int	start(int argc, char **argv, char **envp);
+int		start(int argc, char **argv, char **envp);
 
 /**
  * @brief Verify errors in app - Number of params / args
@@ -78,7 +75,7 @@ void	error_args_handler(int code, t_data data);
  * @brief Verify errors in app - File Descriptor error
  * @param data Obj Data
  */
-void	error_fd_handler (t_data data);
+void	error_fd_handler(t_data data);
 
 /**
  * @brief Verify errors in app - Pipe return
@@ -89,7 +86,7 @@ void	error_pipe_handler(t_data data);
 /**
  * @brief Verify error when open a file
  */
-void	error_open_file();
+void	error_open_file(t_data data);
 
 /**
  * @brief Check if Fork process get some error
@@ -104,7 +101,7 @@ void	error_fork_handler(t_data data);
  * @param data In case of error, free from memory
  * @return int File descriptor Code
  */
-int	file_open(char *file, int mode, t_data data);
+int		file_open(char *file, int mode, t_data data);
 
 /**
  * @brief The second command in pipe. Child command executed.
@@ -155,7 +152,9 @@ void	remove_backslash(char *str);
 void	replace_spaces(char *str);
 
 /**
- * @brief Check if the command contain backlash(\). If positive, we must remove * to apply the correct command before split. It will be put in special chars   *(')
+ * @brief Check if the command contain backlash(\). If positive, we must
+ * remove * to apply the correct command before split. It will be put in
+ * special chars   *(')
  * @param str str to check
  * @return int yes or no
  */
