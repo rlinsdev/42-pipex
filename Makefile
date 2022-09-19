@@ -67,7 +67,8 @@ run: all main
 #	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "ls -l" "wc -l" ./files/file-out
 #	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "cat" "grep Avengers" ./files/file-out
 #	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "tr a b" "tr b ' '" ./files/file-out
-	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "tr a b" "tr b '\n'" ./files/file-out
+#	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "tr a b" "tr b '\n'" ./files/file-out
+	@$(BINS_PATH)$(EXECUTABLE) ./files/file-in "tr ' ' _" "tr a 'A'" ./files/file-out
 
 # Sanitize
 clean:
