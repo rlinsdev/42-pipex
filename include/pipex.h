@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/18 17:44:27 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 11:02:04 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,20 +134,27 @@ void	main_process_free(t_data *data);
 void	close_pipes_fd(t_data *data);
 
 /**
- * @brief
- *
- * @param cmd
+ * @brief Come back white space back to the command
+ * @param exec_args
  */
-void	token_rollback(char **cmd);
+void	restore_spaces(char **exec_args);
 
 /**
- * @brief Get the token object
- *
- * @param cmd
- * @param limiter
- * @param to
- * @param from
+ * @brief Will replace \ to white space.
+ * @param str
  */
-void	get_token(char *command, char limiter, char tokenId, char space);
+void	remove_backslash(char *str);
 
+/**
+ * @brief Remove white space from code and mark with spacial char (-1)
+ * @param str
+ */
+void	replace_spaces(char *str);
+
+/**
+ * @brief Check if the command contain backlash(\). If positive, we must remove * to apply the correct command before split. It will be put in special chars   *(')
+ * @param str str to check
+ * @return int yes or no
+ */
+int		contains_backslash(char *str);
 #endif

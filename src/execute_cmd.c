@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:59:00 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/18 17:44:32 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 10:53:57 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,18 @@ void	first_child(t_data data)
 	close(data.pipe_fd[0]);
 	dup2(data.fd_in, 0);
 	// cat
-	get_token(data.argv[2], '\'', ' ', 1);
-	get_token(data.argv[2], '\"', ' ', 1);
-	data.cmd_args = ft_split(data.argv[2], ' ');
-	token_rollback(data.cmd_args);
+	if (contains_backslash(data.argv[2]))
+	{
+		// "tr ' ' _"
+		replace_spaces(data.argv[2]);
+		remove_backslash(data.argv[2]);
+		data.cmd_args = ft_split(data.argv[2], ' ');
+		restore_spaces(data.cmd_args);
+	}
+	else
+	{
+		data.cmd_args = ft_split(data.argv[2], ' ');
+	}
 	call_run(data);
 }
 
@@ -85,9 +93,17 @@ void	second_child(t_data data)
 	close(data.pipe_fd[1]);
 	dup2(data.fd_out, 1);
 	// wc -l
-	get_token(data.argv[3], '\'', ' ', 1);
-	get_token(data.argv[3], '\"', ' ', 1);
-	data.cmd_args = ft_split(data.argv[3], ' ');
-	token_rollback(data.cmd_args);
+	if (contains_backslash(data.argv[3]))
+	{
+		//"tr b ' '"
+		replace_spaces(data.argv[3]); //"tr b '\377'"
+		remove_backslash(data.argv[3]); // "tr b \377 "
+		data.cmd_args = ft_split(data.argv[3], ' '); //"[0]=tr [1]=b [2]=\377"
+		restore_spaces(data.cmd_args); //"[0]=tr [1]=b [2]= "
+	}
+	else
+	{
+		data.cmd_args = ft_split(data.argv[3], ' ');
+	}
 	call_run(data);
 }

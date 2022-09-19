@@ -6,103 +6,86 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 17:10:41 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/18 18:24:41 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 10:57:22 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
 
 /**
- * @brief
- *
- * @param string
- * @param charIdentifier (/)
- * @param tokenId (-1)
+ * @brief Verify if chari is a backslash (\). This will happened when in command exist ' ' (white space between single quotes)
+ * @param str
+ * @return int
  */
-static void	remove_token(char *string, char charIdentifier, char tokenId)
+static int	is_backslash(char str)
 {
-	int	index;
-	int	size;
-
-	index = 0;
-	size = ft_strlen(string);
-	while (string[index])
-	{
-		if (string[index] == charIdentifier)
-		{
-			string[index] = tokenId;
-			break ;
-		}
-		index++;
-	}
-	while (size)
-	{
-		size--;
-		if (string[size] == charIdentifier)
-		{
-			string[size] = tokenId;
-			break ;
-		}
-	}
-}
-/**
- * @brief
- *
- * @param cmd
- * @param limiter
- * @param tokenId (-1)
- * @param charToRemove
- * @return char*
- */
-static char	*token(char *cmd, char limiter, char tokenId, char charToRemove)
-{
-	while (*cmd)
-	{
-		if (*cmd == tokenId)
-			*cmd = charToRemove;
-		if (*cmd == limiter)
-			break ;
-		cmd++;
-	}
-	if (*cmd == limiter)
-		cmd++;
-	return (cmd);
+	return (str == '\'');
 }
 
-void	get_token(char *cmd, char limiter, char tokenId, char space)
+void	restore_spaces(char **exec_args)
 {
-	char	*tmp;
-	int		index;
+	char	*str;
 
-	index = 0;
-	while (cmd[index])
+	while (*exec_args)
 	{
-		if (cmd[index] == limiter)
+		str = *exec_args;
+		while (*str)
 		{
-			tmp = &cmd[index];
-			tmp++;
-			while (*tmp)
+			// Special Char mark
+			if (*str == -1)
 			{
-				if (*tmp == limiter)
-					cmd = token(cmd + index + 1, limiter, tokenId, space);
-				tmp++;
+				// Restore space
+				*str = ' ';
 			}
+			str++;
 		}
-		index++;
+		exec_args++;
 	}
 }
 
-void	token_rollback(char **cmd)
+void	remove_backslash(char *str)
 {
-	int	index;
-
-	index = 0;
-	while (cmd[index])
+	while (*str)
 	{
-		get_token(cmd[index], '\'', 1, ' ');
-		get_token(cmd[index], '\"', 1, ' ');
-		remove_token(cmd[index], '\'', 1);
-		remove_token(cmd[index], '\"', 1);
-		index++;
+		if (is_backslash(*str))
+			*str = ' ';
+		str++;
 	}
+}
+
+void	replace_spaces(char *str)
+{
+	while (*str && !is_backslash(*str))
+		str++;
+	if (*str)
+		str++;
+	while (*str && !is_backslash(*str))
+	{
+		if (*str == ' ')
+		{
+			// Special Char to mark where space was from
+			*str = -1;
+		}
+		str++;
+	}
+	if (*str)
+		str++;
+	// if is not the end
+	if (*str)
+	{
+		// call recursive again
+		replace_spaces(str);
+	}
+}
+
+int	contains_backslash(char *str)
+{
+	while (*str)
+	{
+		// if the char is backslash
+		if (is_backslash(*str))
+			return (1);
+		str++;
+	}
+	return (0);
 }
