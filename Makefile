@@ -56,7 +56,7 @@ $(OBJS_PATH)%.o : $(SRCS_PATH)%.c $(HEADERS_PATH)*.h
 # Creates the executable file $(EXECUTABLE) to test development
 main:	./apps/app.c
 	@$(MKDIR) $(BINS_PATH)
-	$(CC) $(FLAGS) $(OBJECTS) $< $(LIBS_PATH)$(NAME) -I $(HEADERS_PATH) -o $(BINS_PATH)$(EXECUTABLE)
+	@$(CC) $(FLAGS) $(OBJECTS) $< $(LIBS_PATH)$(NAME) -I $(HEADERS_PATH) -o $(BINS_PATH)$(EXECUTABLE)
 
 # Compile program and execute main file
 run: all main
