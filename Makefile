@@ -14,8 +14,8 @@ LIBS_PATH 		= ./lib/
 BINS_PATH 		= ./bin/
 
 # Compilation
-CC = gcc -g
-FLAGS = -Wall -Wextra -Werror
+CC 		= gcc -g
+FLAGS 	= -Wall -Wextra -Werror
 
 #Chedk Leak memory
 LEAK = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s
@@ -35,7 +35,7 @@ OBJECTS 	= $(addprefix $(OBJS_PATH), $(OBJ_FILES))
 EXECUTABLE 	= pipex
 
 # Targets
-all: libft $(NAME)
+all: libft $(NAME) main
 
 # Compiles libft all over
 libft:
@@ -73,7 +73,6 @@ clean:
 	@echo "$(GREEN)$(NAME): $(RED)object (*.o) files were deleted$(RESET)"
 	@$(RM) $(OBJECTS)
 	@echo "$(RED)Clean in progres...$(RESET)"
-#$(MAKE) -C $(MINILIBX_PATH) clean
 	@cd $(LIBS_PATH)libft && $(MAKE_NOPRINT) $@
 
 # Removing .o files, .a files
