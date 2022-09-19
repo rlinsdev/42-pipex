@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:21 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/18 10:01:31 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 16:26:18 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static void	ini_data(t_data *data, int argc, char **argv, char **envp)
 
 int	start(int argc, char **argv, char **envp)
 {
-	t_data data;
+	t_data	data;
+	int 	status;
 	ini_data(&data, argc, argv, envp);
 
 	// Must to be 5 elements in count
@@ -95,8 +96,8 @@ int	start(int argc, char **argv, char **envp)
 	close_pipes_fd(&data);
 
 	// Wait the execution of child process. This will avoid zombie process
-	waitpid(data.pid1, NULL, 0); // supervising the children
-	waitpid(data.pid2, NULL, 0);
+	waitpid(data.pid1, &status, 0); // supervising the children
+	waitpid(data.pid2, &status, 0);
 	main_process_free(&data);
-	return (0);
+	return (WEXITSTATUS(status));
 }

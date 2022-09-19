@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:15:39 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/19 12:18:03 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 14:49:36 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	error_open_file(t_data data)
 	// Free from memory
 	main_process_free(&data);
 	perror(E_OPEN_FIL);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 void	error_fork_handler(t_data data)

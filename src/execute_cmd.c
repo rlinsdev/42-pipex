@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:59:00 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/19 12:23:32 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 16:08:02 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	call_run(t_data data)
 		child_process_free(&data);
 		main_process_free(&data);
 		perror(INV_CMD);
-		exit(1);
+		exit(EXIT_INVCMD);
 	}
 	/* /usr/bin/cat, cat, SHELL=/bin/bash
 	 * /usr/bin/wc, wc, SHELL=/bin/bash */

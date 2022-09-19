@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:02 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/19 11:02:04 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/19 16:02:21 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@
 # define E_PIPE_MSG "Problems to create Pipe"
 # define ACCESS_DEN "The action failed!\n"
 # define E_OPEN_OUT "Invalid output file"
-# define E_OPEN_FIL "Invalid file"
+// # define E_OPEN_FIL "Invalid file"
+# define E_OPEN_FIL "No such file or directory"
 # define E_FORK_PRO "Problem to fork process"
-# define INV_CMD "Invalid command\n"
+# define INV_CMD "Invalid command"
+
+# define EXIT_INVCMD	127
 
 typedef struct s_data
 {
