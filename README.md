@@ -101,6 +101,38 @@ $> make norma
 
 ```
 
+# Videos
+Execute command:
+
+https://youtu.be/uh2FqejQRk8?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY
+
+Getting exit status code in C:
+
+https://www.youtube.com/watch?v=DiNmwwQWl0g&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=12
+
+Execute a program / How to execute another program in C (using exec):
+
+https://www.youtube.com/watch?v=OVFEWSP7n8c
+
+The fork() function in C:
+
+https://www.youtube.com/watch?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&v=cex9XrZCU14&feature=youtu.be
+
+Waiting for processes to finish (using the wait function) in C
+
+https://www.youtube.com/watch?v=tcYo6hipaSA&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=2
+
+Dup e Dup2 / Redirecting standard output in C:
+
+https://www.youtube.com/watch?v=5fnVr-zH-SE
+
+Pipes:
+
+https://www.youtube.com/watch?v=Mqb2dVRe0uo&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY
+
+https://www.youtube.com/watch?v=6xbLgZpOBi8&list=WL&index=23
+
+
 # Tests:
 https://github.com/denisgodoy/pipex-tester
 
