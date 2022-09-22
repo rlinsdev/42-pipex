@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:15:39 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/19 17:23:55 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/21 23:44:44 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,16 @@ void	error_pipe_handler(t_data data)
 
 void	error_fd_handler(t_data data)
 {
+	int	exit_code;
+
 	if (data.fd_in == -1)
 	{
+		exit_code = 0;
+		if (access(data.argv[1], F_OK))
+			exit_code = 1;
 		main_process_free(&data);
 		perror(ACCESS_DEN);
-		exit(0);
+		exit(exit_code);
 	}
 	if (data.fd_out == -1)
 	{

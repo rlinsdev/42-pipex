@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:17:21 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/19 17:22:45 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/21 23:43:50 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	start(int argc, char **argv, char **envp)
 	ini_data(&data, argc, argv, envp);
 	if (argc != 5)
 		error_args_handler(ERROR_ARGS, data);
-	data.fd_in = file_open(argv[1], IN, data);
-	data.fd_out = file_open(argv[4], OUT, data);
+	data.fd_in = file_open(argv[1], IN);
+	data.fd_out = file_open(argv[4], OUT);
 	error_fd_handler(data);
 	data.pipe_status = pipe(data.pipe_fd);
 	error_pipe_handler(data);
