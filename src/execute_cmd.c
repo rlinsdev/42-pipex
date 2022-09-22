@@ -6,7 +6,7 @@
 /*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:59:00 by rlins             #+#    #+#             */
-/*   Updated: 2022/09/19 16:08:02 by rlins            ###   ########.fr       */
+/*   Updated: 2022/09/22 20:43:41 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ static void	call_run(t_data data)
 
 void	first_child(t_data data)
 {
-	dup2(data.pipe_fd[1], 1);
+	dup2(data.pipe_fd[1], STDOUT);
 	// Nothing we want to read, close pipe's read end.
 	close(data.pipe_fd[0]);
-	dup2(data.fd_in, 0);
+	dup2(data.fd_in, STDIN);
 	// cat
 	if (contains_backslash(data.argv[2]))
 	{
@@ -89,10 +89,10 @@ void	first_child(t_data data)
 void	second_child(t_data data)
 {
 	// Duplicate a file descriptor to another standard output
-	dup2(data.pipe_fd[0], 0);
+	dup2(data.pipe_fd[0], STDIN);
 	// Nothing to write, close pipe's write end.
 	close(data.pipe_fd[1]);
-	dup2(data.fd_out, 1);
+	dup2(data.fd_out, STDOUT);
 	// wc -l
 	if (contains_backslash(data.argv[3]))
 	{
