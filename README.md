@@ -135,12 +135,3 @@ https://www.youtube.com/watch?v=6xbLgZpOBi8&list=WL&index=23
 
 # Tests:
 https://github.com/denisgodoy/pipex-tester
-
-
-
-# Guides
- • Xavecode: <a href="https://www.youtube.com/playlist?list=PL3ZslI15yo2r-gHJtjORRMRKMSNRpf7u5" target="_blank">Playlist Link</a>
-
- • <a href="https://harm-smits.github.io/42docs/libs/minilibx.html" target="_blank">Doc 1</a>
-
-• <a href="https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx" target="_blank">Doc 2</a>
