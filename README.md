@@ -81,7 +81,7 @@ $> < ./files/file-in tr a b | tr b ' ' > ./files/file-out
 
 • Debug in child process - Before fork apply command in debug console:
 
-```
+```sh
 $> -exec set follow-fork-mode child
 ```
 
