@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test5.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlins <rlins@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rlins <rlins@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 07:44:13 by rlins             #+#    #+#             */
-/*   Updated: 2022/08/31 07:17:10 by rlins            ###   ########.fr       */
+/*   Updated: 2022/10/29 08:52:14 by rlins            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	startTest5(int argc, char **argv)
 
 	if (pipe(fd) == -1)
 	{
-		printf("An Error occurred with open Pile\n");
+		printf("An Error occurred with open Pipe\n");
 		return (1);
 	}
 
